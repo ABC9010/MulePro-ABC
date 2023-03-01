@@ -1,0 +1,41 @@
+#%RAML 1.0
+title: Food
+types:
+  food data: !include data-types/food items dataType.raml
+/food:
+  get:
+    description: retriving food items
+    responses:
+      200:
+        body:
+          application/json:
+            examples: !include example/food items example.raml 
+  /{ID}:
+    get:
+      displayName: retriving food items by ID
+      responses:
+        200:
+          body:
+            application/json:
+              examples: !include example/food item by id example.raml
+    delete:
+      description: delete food item by ID
+      responses:
+        200:
+          body:
+            application/json:
+              examples:
+                "message": food item deleted successfully!
+  post:
+    description: create food item
+    body:
+      application/json:
+        example: !include example/food item by no-id example.raml
+    responses:
+      201:
+        body:
+          application/json:
+            examples:
+              "message": food item created successfully! 
+          
+    
